@@ -3,12 +3,9 @@ import { Food } from '../shared/models/Food';
 import { sample_foods, smaple_tags } from 'src/data';
 import { Tag } from '../shared/models/Tag';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
-
 
 export class FoodService {
 
@@ -19,12 +16,11 @@ export class FoodService {
   }
 
   getFoodBySearchTerm(searchTerm: string){
-    return this.getAll().filter(food => food.name.toLowerCase().includes(searchTerm.toLocaleLowerCase()))
+    return this.getAll().filter(food => food.name.toLowerCase().includes(searchTerm.toLowerCase()))
   }
 
   getAllTags(): Tag[]{
     return smaple_tags;
-
   }
 
   getAllFoodByTag(tag: string):Food[] {
@@ -36,5 +32,7 @@ export class FoodService {
   getFoodById(foodId: string):Food{
     return this.getAll().find(food => food.id == foodId) ?? new Food()
   }
+
+
 
 }
